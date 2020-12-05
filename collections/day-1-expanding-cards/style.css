@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Muli', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  overflow: hidden;
+  margin: 0;
+}
+
+.container {
+  /* Use flexbox */
+  display: flex;
+  width: 90vw;
+}
+
+.panel {
+  /* 圖片呈現的樣式 */
+  background-size: cover;
+  /* 圖片置中 */
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 80vh;
+  border-radius: 50px;
+  color: aliceblue;
+  /* 游標的樣式 */
+  cursor: pointer;
+  /* 每個 panel 的寬度 */
+  flex: 0.5;
+  margin: 10px;
+  /* panel 內的定位方式 */
+  position: relative;
+  /* 點選 panel 的動畫效果 */
+  transition: flex 0.7s ease-in;
+}
+
+/* panel 內的字 */
+.panel h3 {
+  font-size: 24px;
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  margin: 0;
+  opacity: 0;
+}
+
+/* 當 panel 被點擊時 (有 active class) */
+.panel.active {
+  /* 變寬 */
+  flex: 5;
+}
+
+.panel.active h3 {
+  opacity: 1;
+  /* 延遲h3的透明度和進場的時間 */
+  transition: opacity 0.3s ease-in 0.4s;
+}
+
+/* 螢幕<= 480px 時 */
+@media(max-width: 480px) {
+  .container {
+    width: 100 vw;
+  }
+
+  /* 讓第四和五個 (最右邊兩個) panel 消失 */
+  .panel:nth-of-type(4),.panel:nth-of-type(5) {
+    display: none;
+  }
+}
