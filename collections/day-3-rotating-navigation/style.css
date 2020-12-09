@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Lato', sans-serif;
+  /* 控制 NAV 不會出現在 container 的右側*/
+  overflow-x: hidden;
+  margin: 0;
+  background-color: #333;
+  color: #222;
+}
+
+.container {
+  background-color: #fafafa;
+  /* 要旋轉時，以左上角為原點 */
+  transform-origin: top left;
+  /* 旋轉時的動畫效果 */
+  transition: transform 0.5s linear;
+  width: 100vw;
+  min-height: 100vh;
+  padding: 50px;
+}
+
+/* 控制 div container 旋轉 */
+.container.show-nav {
+  transform: rotate(-20deg);
+}
+
+/* 左上角 circle 內的 icon */
+.circle-container {
+  position: fixed;
+  top: -100px;
+  left: -100px;
+}
+
+.circle {
+  background-color: #ff7979;
+  /* circle 的寬高 200 配合 circle-container 內的 -100 (中心點位置)，可以達到左上角 1/4 圓的效果*/
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+  /* 控制 circle 內的 position style */
+  position: relative;
+  transition: transform 0.5s linear;
+}
+
+/* circle 內的 button */
+.circle button {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 100px;
+  /* button 呈現透明 */
+  background: transparent;
+  /* 去除 border */
+  border: 0;
+  font-size: 26px;
+  color: white;
+}
+
+/* 移除點 button 選時，出現的 border */
+.circle button:focus {
+  outline: none;
+}
+
+/* button open */
+.circle button#open {
+  left: 60%;
+}
+
+/* button open */
+.circle button#close {
+  top: 60%;
+  transform: rotate(90deg);
+  transform-origin: top left;
+}
+
+.content img {
+  max-width: 100%;
+}
