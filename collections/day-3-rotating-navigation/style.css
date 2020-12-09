@@ -24,7 +24,7 @@ body {
   padding: 50px;
 }
 
-/* 控制 div container 旋轉 */
+/* 控制 div container (內容主頁) 旋轉 */
 .container.show-nav {
   transform: rotate(-20deg);
 }
@@ -45,6 +45,11 @@ body {
   /* 控制 circle 內的 position style */
   position: relative;
   transition: transform 0.5s linear;
+}
+
+/* 點選 open / close 時，circle 內的 icon (open/close) 會跟著轉動 */
+.container.container.show-nav .circle {
+  transform: rotate(-70deg);
 }
 
 /* circle 內的 button */
@@ -72,13 +77,82 @@ body {
   left: 60%;
 }
 
-/* button open */
+/* button close (修飾 close icon 的位置) */
 .circle button#close {
   top: 60%;
   transform: rotate(90deg);
   transform-origin: top left;
 }
 
+.container.show-nav + nav li {
+  /* 當要顯示 nav 時，讓其位置歸位 = 0 */
+  transform: translateX(0);
+  /* 延遲一點時間進場 */
+  transition-delay: 0.3s;
+}
+
+nav {
+  position: fixed;
+  bottom: 40px;
+  left: 0;
+  z-index: 100;
+}
+
+nav ul {
+  /* 將 bullet point 給消除 */
+  list-style-type: none;
+  padding-left: 30px;
+}
+
+nav ul li {
+  text-transform: uppercase;
+  color: #fff;
+  margin: 40px 0;
+  /* nav 的位置 */
+  transform: translateX(-100%);
+  /* nav 的動畫 */
+  transition: transform 0.4s ease-in;
+}
+
+nav ul li i {
+  /* icon 變大 */
+  font-size: 20px;
+  /* icon 跟字的距離增加 */
+  margin-right: 10px;
+}
+/* 為了讓三個 nav 有斜坡的感覺，因此對第二個 ABOUT li 做 margin left */
+nav ul li  + li {
+  margin-left: 15px;
+  transform: translateX(-150%);
+}
+/* 為了讓三個 nav 有斜坡的感覺，因此對第三個 CONTACT li 做 margin left */
+nav ul li  + li + li {
+  margin-left: 30px;
+  transform: translateX(-200%);
+}
+
+
 .content img {
   max-width: 100%;
+}
+
+.content {
+  max-width: 1000px;
+  /* auto 置中 */
+  margin: 50px auto;
+}
+
+.content h1 {
+  margin: 0;
+}
+
+.content small {
+  color: #555555;
+  font-style: italic;
+}
+
+.content p {
+  color: #333;
+  /* 每行間距 */
+  line-height: 1.5;
 }
