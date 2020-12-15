@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #efedd6;
+  font-family: 'Roboto', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  /* 因為初始時將 box 往右邊移動 400%，因此寬度會增加，所以用 overflow-x 限制住寬度 */
+  overflow-x: hidden;
+}
+
+h1 {
+  margin: 10px;
+}
+
+.box {
+  background-color: steelblue;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 400px;
+  height: 200px;
+  margin: 10px;
+  border-radius: 10px;
+  box-shadow: 2px 4px 5px rgba(0, 0, 0, 0.3);
+  /* 初始時，讓 box 右移 400% */
+  transform: translateX(400%);
+  transition: transform 0.4s ease;
+}
+
+.box h2 {
+  font-size: 45px;
+}
+
+/* 此 css 一定要在 .btn.show 的上面，否則左半邊的 box 不會跑出來 */
+/* 偶數的 box 左移 400% */
+.box:nth-of-type(even) {
+  transform: translateX(-400%);
+}
+
+.box.show {
+  /* 讓 box 位置回到預設 */
+  transform: translateX(0);
+}
